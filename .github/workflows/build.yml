@@ -43,7 +43,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha
-            ${{ RUN_NUM }}
+            ${{ env.RUN_NUM }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -52,7 +52,5 @@ jobs:
           file: deploy/Dockerfile.arm64
           platforms: linux/amd64,linux/arm64
           push: true
-            #tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v0.39.3"
-#          tags: latest
-         tags: ${{ steps.meta.outputs.tags }}
-#         labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
