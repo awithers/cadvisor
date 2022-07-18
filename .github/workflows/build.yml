@@ -3,6 +3,8 @@ name: Build cadvisor container for ARM64
 on:
   push:
     branches: ['arm64']
+    tags:
+      - 'v.*'
 
 env:
   REGISTRY: ghcr.io
